@@ -1,10 +1,12 @@
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-CoordMode, Mouse, Client 
+SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
+CoordMode, Mouse, Client
 #SingleInstance, force
 #Persistent
+#InstallKeybdHook
+
 Menu, Tray, NoIcon
 
 ; kill capslock
@@ -13,12 +15,12 @@ SetScrollLockState, off
 
 ; better alt f4
 ^!F4::
-WinGet, Active_Window, ProcessName, A
-Parsed_Active_Window := StrSplit(Active_Window, ".")
-If Not (Parsed_Active_Window[1] = "Explorer") {
-    WinGet, active_id, PID, A
-    run, taskkill /PID %active_id% /F,,Hide 
-}
+    WinGet, Active_Window, ProcessName, A
+    Parsed_Active_Window := StrSplit(Active_Window, ".")
+    If Not (Parsed_Active_Window[1] = "Explorer") {
+        WinGet, active_id, PID, A
+        run, taskkill /PID %active_id% /F,,Hide
+    }
 return
 
 /*
@@ -32,23 +34,21 @@ return
 */
 
 ;allways ontop
-ScrollLock:: Winset, Alwaysontop, , A 
+ScrollLock:: Winset, Alwaysontop, , A
 
-;soundrestart
-^f24::send, {f23}
-/*
-send, #d
-Sleep, 500
-MouseClick, Right, 3681, 1057
-Sleep, 500
-MouseClick, Left, 1782, -128
-send, #d
-Return
-*/
+; lets me type brackets with macOs shortcuts
++!8::send {{}
++!9::send {}}
+!8::[
+!9::]
+
+; delete with crl + d
+^d::send {Delete}
 
 ;minecraft fix
 #IfWinActive ahk_exe javaw.exe
-/*
-*XButton2::p
-*XButton1::o
-*/
+    /*
+    *XButton2::p
+    *XButton1::o
+    */
+
