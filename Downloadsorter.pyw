@@ -9,7 +9,7 @@ files = os.listdir(download_path)
 
 types = {
     "zip": [".zip", ".rar", ".7z", ".gz", ".tar", ".bz2"],
-    "video": [".mp4", ".mov", ".m4v", ".flv", ".webm", ".mkv"],
+    "video": [".mp4", ".mov", ".m4v", ".flv", ".webm", ".mkv", ".MOV"],
     "pictures": [".jpeg", ".jfif", ".jpg", ".png", ".gif", ".webp", ".ico", ".svg", ".PNG", ".JPG"],
     "text": [".txt", ".cfg", ".ini", ".pdf", ".docx", ".doc"],
     "program": [".exe", ".dll", ".js", ".py", ".ahk", ".jar", ".sh", ".bat", ".html", ".css", ".lua", ".sql", ".msi", ".cpp", ".h", ".c", ".hpp", ".pro", "br", ".lol"],
